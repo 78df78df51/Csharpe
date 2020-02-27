@@ -6,7 +6,7 @@ namespace EstruturaRepetitivaExercicios
     {
         static void Main(string[] args)
         {
-            Exercicio3();
+            Exercicio2();
         }
 
         public static void Exercicio1()
@@ -35,25 +35,26 @@ namespace EstruturaRepetitivaExercicios
             {
                 if (x > 0 && y > 0)
                 {
-                    Console.WriteLine("Primeiro");
+                    Console.WriteLine("Primeiro, Digite o valor de X e Y, respectativamente (na mesma linha separado por um espaço)");
                 }
                 else if (x < 0 && y > 0)
                 {
-                    Console.WriteLine("Segundo");
+                    Console.WriteLine("Segundo, Digite o valor de X e Y, respectativamente (na mesma linha separado por um espaço)");
                 }
                 else if (x < 0 && y < 0)
                 {
-                    Console.WriteLine("Terceiro");
+                    Console.WriteLine("Terceiro, Digite o valor de X e Y, respectativamente (na mesma linha separado por um espaço)");
                 }
                 else
                 {
-                    Console.WriteLine("Quarto");
+                    Console.WriteLine("Quarto, Digite o valor de X e Y, respectativamente (na mesma linha separado por um espaço)");
                 }
 
                 vs = Console.ReadLine().Split();
                 x = double.Parse(vs[0]);
                 y = double.Parse(vs[1]);
             }
+                Console.WriteLine("Fim!");
         }
 
         public static void Exercicio3()
@@ -68,15 +69,15 @@ namespace EstruturaRepetitivaExercicios
             {
                 if (x == 1)
                 {
-                    alcool = alcool + 1;
+                    alcool += 1;
                 }
                 else if (x == 2)
                 {
-                    gasolina = gasolina + 1;
+                    gasolina += 1;
                 }
                 else if (x == 3)
                 {
-                    diesel = diesel + 1;
+                    diesel += 1;
                 }
 
                 Console.WriteLine("Digite um novo código");

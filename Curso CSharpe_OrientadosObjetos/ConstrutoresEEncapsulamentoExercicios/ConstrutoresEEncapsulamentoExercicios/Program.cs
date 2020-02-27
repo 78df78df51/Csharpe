@@ -16,7 +16,7 @@ namespace ConstrutoresEEncapsulamentoExercicios
             Console.Write("Bem vindo, entre com o número da conta: ");
             conta = int.Parse(Console.ReadLine());
 
-
+            
             Console.Write("Entre com o titular da conta: ");
             nome = Console.ReadLine();
 

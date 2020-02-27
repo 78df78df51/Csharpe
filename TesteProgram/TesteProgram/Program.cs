@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace TesteProgram
@@ -10,17 +11,16 @@ namespace TesteProgram
     {
         static void Main(string[] args)
         {
-            Conjuntos();
+            Matriz();
         }
 
         public static void ExtensionMethods2()
         {
-            int[] ints = { 10, 45, 15, 39, 21, 26 };
-            var result = ints.OrderBy(g => g);
-            foreach (var i in result)
-            {
-                System.Console.Write(i + " ");
-            }
+            Point p = new Point();
+
+
+            Console.WriteLine(p);
+
         }
 
         public static int WordCount(this String str)
@@ -300,10 +300,10 @@ namespace TesteProgram
                 Console.Write("\nFuncionário# " + i);
                 Console.Write("\nId: ");
                 int id = int.Parse(Console.ReadLine());
-                
+
                 Console.Write("Nome: ");
                 string nome = Console.ReadLine();
-                
+
                 Console.Write("Salário: ");
                 double salario = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
@@ -334,6 +334,7 @@ namespace TesteProgram
 
         public static void Matriz()
         {
+
             int n = int.Parse(Console.ReadLine());
 
             double[,] mat = new double[n, n];
@@ -351,7 +352,7 @@ namespace TesteProgram
             Console.WriteLine("Valores na diagonal: ");
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine(mat[i,i] + "");
+                Console.WriteLine(mat[i, i] + "");
             }
             Console.WriteLine();
 
@@ -391,24 +392,24 @@ namespace TesteProgram
             {
                 for (int j = 0; j < n; j++)
                 {
-                    if (mat[i,j] == x)
+                    if (mat[i, j] == x)
                     {
                         Console.WriteLine($"Posição: {i}, {j}: ");
                         if (j > 0)
                         {
-                            Console.WriteLine($"Esquerda: {mat[i,j - 1]}");
+                            Console.WriteLine($"Esquerda: {mat[i, j - 1]}");
                         }
                         if (i > 0)
                         {
-                            Console.WriteLine($"Cima: {mat[i-1,j]}");
+                            Console.WriteLine($"Cima: {mat[i - 1, j]}");
                         }
-                        if (j < n -1)
+                        if (j < n - 1)
                         {
                             Console.WriteLine($"Direita: {mat[i, j + 1]}");
                         }
                         if (i < m - 1)
                         {
-                            Console.WriteLine($"Baixo: {mat[i + 1,j]}");
+                            Console.WriteLine($"Baixo: {mat[i + 1, j]}");
                         }
                     }
                 }
@@ -443,7 +444,7 @@ namespace TesteProgram
             }
             else
             {
-                Console.WriteLine(n + "  Não pertence ao conjunto " +  B);
+                Console.WriteLine(n + "  Não pertence ao conjunto " + B);
             }
         }
 
@@ -483,5 +484,229 @@ namespace TesteProgram
             Novo.UnionWith(A);
             Console.WriteLine("Total de Alunos " + Novo.Count);
         }
+
+        public static int simpleArraySum(int[] ar)
+        {
+            int len = ar.Length;
+            int sum = 0;
+            for (int i = 0; i < len; i++)
+            {
+                sum += ar[i];
+            }
+            return sum;
+        }
+
+        public static void Resolve()
+        {
+            //TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+            int arCount = Convert.ToInt32(Console.ReadLine());
+
+            int[] ar = Array.ConvertAll(Console.ReadLine().Split(' '), arTemp => Convert.ToInt32(arTemp));
+            //int result = Console.ReadLine(ar[0]);
+            int result = simpleArraySum(ar);
+
+            //for (int i = 0; i < arCount; i++)
+            //{
+
+            //}
+            Console.WriteLine(result);
+            //textWriter.WriteLine(result);
+
+            //textWriter.Flush();
+            //textWriter.Close();
+        }
+
+        public static void TestePrograma()
+        {
+
+        }
+        public class AlertService
+        {
+            private readonly AlertDAO storage = new AlertDAO();
+
+            public Guid RaiseAlert()
+            {
+                return this.storage.AddAlert(DateTime.Now);
+            }
+
+            public DateTime GetAlertTime(Guid id)
+            {
+                return this.storage.GetAlert(id);
+            }
+        }
+
+        public class AlertDAO : IAlertDAO
+        {
+
+            private readonly Dictionary<Guid, DateTime> alerts = new Dictionary<Guid, DateTime>();
+
+            public Guid AddAlert(DateTime time)
+            {
+                Guid id = Guid.NewGuid();
+                this.alerts.Add(id, time);
+                return id;
+            }
+
+            public DateTime GetAlert(Guid id)
+            {
+                return this.alerts[id];
+            }
+        }
+
+        //public class AlertService
+        //{
+        //    private readonly IAlertDAO alertDAO;
+        //    public Guid Id { get; set; }
+        //    public DateTime Time { get; set; }
+
+        //    public AlertService(Guid id, DateTime time)
+        //    {
+        //        Id = id;
+        //        Time = time;
+        //    }
+        //}
+
+        public interface IAlertDAO
+        {
+            Guid AddAlert(DateTime time);
+            public DateTime GetAlert(Guid id);
+        }
+
+        public class QuadraticEquation
+        {
+            public static Tuple<double, double> FindRoots(double a, double b, double c)
+            {
+                throw new NotImplementedException("Waiting to be implemented.");
+            }
+
+
+        }
+
+        public static void MatrizBi()
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] mat = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] values = Console.ReadLine().Split(' ');
+
+                for (int j = 0; j < n; j++)
+                {
+                    mat[i, j] = int.Parse(values[j]);
+                }
+            }
+
+            Console.WriteLine("Main Diagonal: ");
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(mat[i, i] + "");
+            }
+
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (mat[i, j] < 0)
+                    {
+                        count += 1;
+                    }
+                }
+            }
+            Console.WriteLine("Number Negative: " + count);
+        }
+
+        public static void MatrixExe()
+        {
+            int m = int.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] mat = new int[m, n];
+
+            for (int i = 0; i < m; i++)
+            {
+                string[] values = Console.ReadLine().Split(' ');
+                for (int j = 0; j < n; j++)
+                {
+                    mat[i, j] = int.Parse(values[j]);
+                }
+            }
+
+            int x = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (mat[i, j] == x)
+                    {
+                        Console.WriteLine($"Position {i},{j}: ");
+                    }
+                    if (j > 0)
+                    {
+                        Console.WriteLine($"Left: {mat[i, j - 1]}");
+                    }
+                    if (i > 0)
+                    {
+                        Console.WriteLine($"Up: {mat[i - 1, j]}");
+
+                    }
+                    if (j < n - 1)
+                    {
+                        Console.WriteLine($"Right: {mat[i, j + 1]}");
+
+                    }
+                    if (i < m - 1)
+                    {
+                        Console.WriteLine($"Down: {mat[i + 1, j]}");
+                    }
+                }
+            }
+        }
+
+        public static void Matrizes01()
+        {
+            int[,] mat = new int[3, 3];
+
+            for (int lin = 0; lin < 3; lin++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+
+                    Console.WriteLine("Insira os valores na matriz 3 por 3");
+                    Console.WriteLine("linha: " + lin + " coluna " + col);
+                    mat[lin, col] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            Console.WriteLine("Insira um valor que está dentro da matriz ");
+            int numero = int.Parse(Console.ReadLine());
+
+            int conta = 0;
+            for (int lin = 0; lin < 3; lin++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    if (numero == mat[lin, col])
+                    {
+                        conta += 1;
+                    }
+                }
+            }
+
+            Console.WriteLine("O total de vezes que {0} aparece é {1} ", numero, conta);
+
+            conta = 0;
+            for (int col = 0; col < 3; col++)
+            {
+                conta += 1;
+            }
+
+            Console.WriteLine("O total de vezes que {0} aparece é {1} ", numero, conta);
+        }
+
     }
 }
